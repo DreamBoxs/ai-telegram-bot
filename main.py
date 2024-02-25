@@ -10,7 +10,7 @@ load_dotenv(sys.argv[1])
 AI_GOOGLE_API = os.getenv("AI_GOOGLE_API")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-bot = telebot.TeleBo5(BOT_TOKEN)
+bot = telebot.TeleBot(BOT_TOKEN)
 
 
 def google_ai(question):
