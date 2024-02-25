@@ -14,6 +14,12 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
+def get_text(message):
+    reply_text = message.reply_to_message.text or message.reply_to_message.caption if message.reply_to_message else ""
+    user_text = message.text.split(None, 1)[1] if len(message.text.split()) >= 2 else ""
+    return f"{user_text}\n\n{reply_text}" if reply_text and user_text else reply_text + user_text
+
+
 def google_ai(question):
     if not AI_GOOGLE_API:
         return "Silakan periksa AI_GOOGLE_API Anda di file env"
@@ -46,7 +52,7 @@ def google(message):
     else:
         msg = bot.reply_to(message, "Silahkan tunggu...")
         try:
-            result = google_ai(message.text)
+            result = google_ai(get_text(message))
         except Exception as error:
             result = str(error)
         bot.edit_message_text(chat_id=message.chat.id, message_id=msg.message_id, text=result, parse_mode='Markdown')
