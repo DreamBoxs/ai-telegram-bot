@@ -4,6 +4,7 @@ import sys
 import google.generativeai as genai
 import telebot
 from dotenv import load_dotenv
+from telebot import types
 
 load_dotenv(sys.argv[1])
 
@@ -15,7 +16,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 def google_ai(question):
     if not AI_GOOGLE_API:
-        return "silakan periksa AI_GOOGLE_API anda di file env"
+        return "Silakan periksa AI_GOOGLE_API Anda di file env"
     genai.configure(api_key=AI_GOOGLE_API)
     generation_config = {
         "temperature": 1,
@@ -38,14 +39,17 @@ def google_ai(question):
 @bot.message_handler(func=lambda message: True)
 def google(message):
     if message.text.startswith("/start"):
-        bot.reply_to(message, "👋 Hai, Perkenalkan saya ai google telegram bot. Dan saya adalah robot kecerdasan buatan dari ai.google.dev, dan saya siap menjawab pertanyaan yang Anda berikan\n\nsecure code: [repository](https://github.com/DreamBoxs/ai-telegram-bot)\ncredit: [ɴᴏʀ sᴏᴅɪᴋɪɴ](httts://t.me/NorSodikin)", parse_mode='Markdown')
+        markup = types.InlineKeyboardMarkup()
+        markup.add(types.InlineKeyboardButton("Repository", url="https://github.com/DreamBoxs/ai-telegram-bot"))
+        markup.add(types.InlineKeyboardButton("Credit", url="https://t.me/NorSodikin"))
+        bot.reply_to(message, "👋 Hai, Perkenalkan saya ai google telegram bot. Dan saya adalah robot kecerdasan buatan dari ai.google.dev, dan saya siap menjawab pertanyaan yang Anda berikan", reply_markup=markup)
     else:
         msg = bot.reply_to(message, "Silahkan tunggu...")
         try:
             result = google_ai(message.text)
         except Exception as error:
             result = str(error)
-        bot.edit_message_text(result, message.chat.id, msg.message_id, parse_mode='Markdown')
+        bot.edit_message_text(chat_id=message.chat.id, message_id=msg.message_id, text=result, parse_mode='Markdown')
 
 
 bot.infinity_polling()
