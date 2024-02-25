@@ -4,7 +4,7 @@
    - SIAPKAN `AI_GOOGLE_API` DAPATKAN DARI: [ai.google.dev](https://ai.google.dev)
 
 ### CARA INSTALASI ONLY VPS (VIRTUAL PRIVATE SERVER)
-   - INSTALL PACKAGE: `pip3 install PyTelegramBotAPI python-dotenv`
+   - INSTALL PACKAGE: `pip3 install PyTelegramBotAPI google-generativeai python-dotenv`
    - BIKIN ENV: `nano nama_bebas.env`
       ### CONFIG
          
