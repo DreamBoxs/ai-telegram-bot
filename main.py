@@ -45,7 +45,7 @@ def google(message):
             result = google_ai(message.text)
         except Exception as error:
             result = str(error)
-        bot.edit_message_text(result, message.chat.id, msg.message_id)
+        bot.edit_message_text(result, message.chat.id, msg.message_id, parse_mode='Markdown')
 
 
 bot.infinity_polling()
