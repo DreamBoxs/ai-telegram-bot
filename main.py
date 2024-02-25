@@ -53,9 +53,10 @@ def google(message):
         msg = bot.reply_to(message, "Silahkan tunggu...")
         try:
             result = google_ai(get_text(message))
+            bot.edit_message_text(chat_id=message.chat.id, message_id=msg.message_id, text=result, parse_mode='Markdown')
         except Exception as error:
             result = str(error)
-        bot.edit_message_text(chat_id=message.chat.id, message_id=msg.message_id, text=result, parse_mode='Markdown')
+            bot.edit_message_text(chat_id=message.chat.id, message_id=msg.message_id, text=result, parse_mode='Markdown')
 
 
 bot.infinity_polling()
