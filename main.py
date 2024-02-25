@@ -1,5 +1,6 @@
 import os
 import sys
+from io import BytesIO
 
 import google.generativeai as genai
 import telebot
@@ -42,6 +43,15 @@ def google_ai(question):
     return convo.last.text
 
 
+def send_large_output(message, output):
+    if len(output) <= 4096:
+        bot.send_message(message.chat.id, output, parse_mode='Markdown')
+    else:
+        with BytesIO(str.encode(str(output))) as out_file:
+            out_file.name = "result.txt"
+            bot.send_document(message.chat.id, out_file)
+
+
 @bot.message_handler(func=lambda message: True)
 def google(message):
     if message.text.startswith("/start"):
@@ -53,10 +63,9 @@ def google(message):
         msg = bot.reply_to(message, "Silahkan tunggu...")
         try:
             result = google_ai(get_text(message))
-            bot.edit_message_text(chat_id=message.chat.id, message_id=msg.message_id, text=result, parse_mode='Markdown')
+            send_large_output(message, result)
         except Exception as error:
-            result = str(error)
-            bot.edit_message_text(chat_id=message.chat.id, message_id=msg.message_id, text=result, parse_mode='Markdown')
+            bot.edit_message_text(chat_id=message.chat.id, message_id=msg.message_id, text=str(error), parse_mode='Markdown')
 
 
 bot.infinity_polling()
