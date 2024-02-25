@@ -38,7 +38,7 @@ def google_ai(question):
 @bot.message_handler(func=lambda message: True)
 def google(message):
     if message.text.startswith("/start"):
-        bot.reply_to(message, "👋 Hai, Perkenalkan saya ai google telegram bot. Dan saya adalah robot kecerdasan buatan dari ai.google.dev, dan saya siap menjawab pertanyaan yang Anda berikan")
+        bot.reply_to(message, "👋 Hai, Perkenalkan saya ai google telegram bot. Dan saya adalah robot kecerdasan buatan dari ai.google.dev, dan saya siap menjawab pertanyaan yang Anda berikan\n\nsecure code: [repository](https://github.com/DreamBoxs/ai-telegram-bot)\ncredit: [ɴᴏʀ sᴏᴅɪᴋɪɴ](httts://t.me/NorSodikin)")
     else:
         msg = bot.reply_to(message, "Silahkan tunggu...")
         try:
