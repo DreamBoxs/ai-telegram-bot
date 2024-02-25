@@ -40,7 +40,7 @@ def google(message):
     if message.text.startswith("/start"):
         bot.reply_to(message, "👋 Hai, Perkenalkan saya ai google telegram bot. Dan saya adalah robot kecerdasan buatan dari ai.google.dev, dan saya siap menjawab pertanyaan yang Anda berikan")
     else:
-        msg = bot.reply_to(message, result)
+        msg = bot.reply_to(message, "Silahkan tunggu...")
         try:
             result = google_ai(message.text)
         except Exception as error:
