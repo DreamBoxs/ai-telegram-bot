@@ -43,8 +43,8 @@ def google_ai(question):
     return convo.last.text
 
 
-def send_large_output(message, output):
-    if len(output) <= 4096:
+def send_large_output(message, output, msg):
+    if len(output) <= 4000:
         bot.send_message(message.chat.id, output, parse_mode='Markdown')
     else:
         with BytesIO(str.encode(str(output))) as out_file:
@@ -64,7 +64,7 @@ def google(message):
         msg = bot.reply_to(message, "Silahkan tunggu...")
         try:
             result = google_ai(get_text(message))
-            send_large_output(message, result)
+            send_large_output(message, result, msg)
         except Exception as error:
             bot.edit_message_text(chat_id=message.chat.id, message_id=msg.message_id, text=str(error), parse_mode='Markdown')
 
