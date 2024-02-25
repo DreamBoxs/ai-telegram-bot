@@ -50,6 +50,7 @@ def send_large_output(message, output):
         with BytesIO(str.encode(str(output))) as out_file:
             out_file.name = "result.txt"
             bot.send_document(message.chat.id, out_file)
+    bot.delete_message(message.chat.id, msg.message_id)
 
 
 @bot.message_handler(func=lambda message: True)
