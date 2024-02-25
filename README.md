@@ -1,6 +1,6 @@
 ### AI TELEGRAM BOT
    ## BAHAN YANG DIBUTUHKAN 
-   - SIAPKAN `BOT_TOKEN` DAPATKAN DARI: [@BotFather](httts://t.me/BotFather)
+   - SIAPKAN `BOT_TOKEN` DAPATKAN DARI: [@BotFather](https://t.me/BotFather)
    - SIAPKAN `AI_GOOGLE_API` DAPATKAN DARI: [ai.google.dev](https://ai.google.dev)
 
 ### CARA INSTALASI ONLY VPS (VIRTUAL PRIVATE SERVER)
