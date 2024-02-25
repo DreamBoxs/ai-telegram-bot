@@ -35,7 +35,7 @@ def google_ai(question):
     return convo.last.text
 
 
-@bot.message_handler(content_types=["text"])
+@bot.message_handler(func=lambda message: True)
 def google(message):
     if message.text.startswith("/start"):
         bot.reply_to(message, "👋 Hai, Perkenalkan saya ai google telegram bot. Dan saya adalah robot kecerdasan buatan dari ai.google.dev, dan saya siap menjawab pertanyaan yang Anda berikan")
