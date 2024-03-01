@@ -11,10 +11,11 @@ load_dotenv(sys.argv[1])
 
 AI_GOOGLE_API = os.getenv("AI_GOOGLE_API")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-MONGO_URL = os.getenv("MONGO_URL")
+OWNER_ID = int(os.getenv("OWNER_ID"))
 
 bot = telebot.TeleBot(BOT_TOKEN)
-text = f"""
+
+text = """
 user_id: {}
 name: {} {}
 
