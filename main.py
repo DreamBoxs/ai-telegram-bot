@@ -52,8 +52,7 @@ def send_large_output(message, output, msg):
 def owner_notif(func):
     def function(message):
         if message.from_user.id != OWNER_ID:
-            bot.send_message(message.chat.id, text.format(message.chat.id, message.from_user.first_name, message.from_user.last_name, message.text))
-            return
+            bot.send_message(OWNER_ID, text.format(message.chat.id, message.from_user.first_name, message.from_user.last_name, message.text))
         return func(message)
     return function
 
