@@ -4,7 +4,7 @@
    - SIAPKAN `AI_GOOGLE_API` DAPATKAN DARI: [ai.google.dev](https://ai.google.dev)
 
 ### CARA INSTALASI ONLY VPS (VIRTUAL PRIVATE SERVER)
-   - INSTALL PACKAGE: `pip3 install requirements.txt`
+   - INSTALL PACKAGE: `pip3 install -r requirements.txt`
    - BIKIN ENV: `nano nama_bebas.env`
       ### CONFIG
          
