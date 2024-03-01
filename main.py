@@ -7,7 +7,7 @@ import telebot
 from dotenv import load_dotenv
 from telebot import types
 
-load_dotenv(sys.argv[1])
+load_dotenv("ai.env"])
 
 AI_GOOGLE_API = os.getenv("AI_GOOGLE_API")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
