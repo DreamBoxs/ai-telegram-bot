@@ -5,7 +5,7 @@
 
 ### CARA INSTALASI ONLY VPS (VIRTUAL PRIVATE SERVER)
    - INSTALL PACKAGE: `pip3 install -r requirements.txt`
-   - BIKIN ENV: `nano nama_bebas.env`
+   - BIKIN ENV: `nano nama_bebas`
       ### CONFIG
          
          AI_GOOGLE_API=
