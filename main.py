@@ -11,8 +11,15 @@ load_dotenv(sys.argv[1])
 
 AI_GOOGLE_API = os.getenv("AI_GOOGLE_API")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+MONGO_URL = os.getenv("MONGO_URL")
 
 bot = telebot.TeleBot(BOT_TOKEN)
+text = f"""
+user_id: {}
+name: {} {}
+
+msg: {}
+"""
 
 
 def get_text(message):
@@ -41,7 +48,17 @@ def send_large_output(message, output, msg):
     bot.delete_message(message.chat.id, msg.message_id)
 
 
+def owner_notif(func):
+    def function(message):
+        if message.from_user.id != OWNER_ID:
+            bot.send_message(message.chat.id, text.format(message.chat.id, message.from_user.first_name, message.from_user.last_name, message.text))
+            return
+        return func(message)
+    return function
+
+
 @bot.message_handler(func=lambda message: True)
+@owner_notif
 def google(message):
     if message.text.startswith("/start"):
         markup = types.InlineKeyboardMarkup()
