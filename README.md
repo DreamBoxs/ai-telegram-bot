@@ -10,6 +10,7 @@
          
          AI_GOOGLE_API=
          BOT_TOKEN=
+         OWNER_ID=
          
    - START BOT: `python3 -m main.py nama_env`
 
