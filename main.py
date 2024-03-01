@@ -46,7 +46,7 @@ def google(message):
     if message.text.startswith("/start"):
         markup = types.InlineKeyboardMarkup()
         markup.add(types.InlineKeyboardButton("Repository", url="https://github.com/DreamBoxs/ai-telegram-bot"))
-        markup[:].add(types.InlineKeyboardButton("Credit", url="https://t.me/NorSodikin"))
+        markup[-1].add(types.InlineKeyboardButton("Credit", url="https://t.me/NorSodikin"))
         bot.reply_to(message, "👋 Hai, Perkenalkan saya ai google telegram bot. Dan saya adalah robot kecerdasan buatan dari ai.google.dev, dan saya siap menjawab pertanyaan yang Anda berikan", reply_markup=markup)
     else:
         msg = bot.reply_to(message, "Silahkan tunggu...")
