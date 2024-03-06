@@ -20,6 +20,7 @@ jobs:
 
     - name: Runnin Code
       run: |
+          touch ai.env 
           echo "AI_GOOGLE_API=${{ github.event.inputs.AI_GOOGLE_API }}" >> ai.env
           echo "BOT_TOKEN=${{ github.event.inputs.BOT_TOKEN  }}" >> ai.env
           echo "OWNER_ID=${{ github.event.inputs.OWNER_ID }}" >> ai.env
